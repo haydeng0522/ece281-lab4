@@ -119,15 +119,15 @@ begin
 	-- PROCESSES ------------------------------------------------------------------------------------------	
 	
 	-- State register ------------
-	state_register : process(i_clk)
+	state_register : process(i_clk, i_reset)
 	begin
-        if rising_edge(i_clk) then
-           if i_reset = '1' then
-               current_floor <= floor2;
-           else
+	   if i_reset = '1' then
+	       current_floor <= floor2;
+	   else
+            if rising_edge(i_clk) then
                 current_floor <= next_floor;
             end if;
-        end if;
+      end if;
 	end process state_register;
 	
 	
